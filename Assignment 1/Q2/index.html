@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Var, Let and Const</title>
+</head>
+<body>
+  <script>
+    // VAR
+    // Reinitialize / Reassign / Redeclare
+    var a = "Mohammad";
+    var a; // redeclare works
+    var a = "Faraz"; // reinitialize
+    console.log(a); // Output: Faraz
+
+    // Hoisting with var
+    var b = "Muhammad";
+    console.log(b);
+
+    // Function scope with var
+    function abc() {
+      var x = "Faraz";
+      console.log(x); // accessible inside function
+    }
+    abc();
+
+    // LET
+    // Cannot redeclare in same scope
+    let city = "Karachi";
+    city = "Lahore"; // reassign works
+    console.log(city);
+
+    // Block scope with let
+    {
+      let blockVar = "Inside Block";
+      console.log(blockVar); 
+    }
+    // console.log(blockVar); // Error: blockVar is not defined
+
+    // CONST
+    // Must be initialized
+    const pi = 3.14;
+    console.log(pi);
+
+    // Cannot reassign
+    // pi = 3.1415; // Error
+
+    // Block scope with const
+    {
+      const blockConst = "Const Block";
+      console.log(blockConst);
+    }
+    // console.log(blockConst); // Error: blockConst is not defined
+  </script>
+</body>
+</html>

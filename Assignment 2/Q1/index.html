@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mark Sheet Program</title>
+</head>
+<body>
+  <script>
+    // Constants
+    const totalSubjects = 5; 
+    const maxMarksPerSubject = 100;
+    const totalMaxMarks = totalSubjects * maxMarksPerSubject;
+
+    // Marks for subjects (using let since these may change)
+    let english = 85;
+    let math = 90;
+    let science = 78;
+    let computer = 92;
+    let urdu = 80;
+
+    // Calculate total marks
+    let obtainedMarks = english + math + science + computer + urdu;
+
+    // Calculate percentage
+    let percentage = (obtainedMarks / totalMaxMarks) * 100;
+
+    // Determine grade
+    let grade;
+    if (percentage >= 80) {
+      grade = "A+";
+    } else if (percentage >= 70) {
+      grade = "A";
+    } else if (percentage >= 60) {
+      grade = "B";
+    } else if (percentage >= 50) {
+      grade = "C";
+    } else {
+      grade = "Fail";
+    }
+
+    // Final Output using template literals
+    let result = `
+      <h2>Mark Sheet</h2>
+      English: ${english} <br>
+      Math: ${math} <br>
+      Science: ${science} <br>
+      Computer: ${computer} <br>
+      Urdu: ${urdu} <br><br>
+
+      <b>Total Marks:</b> ${totalMaxMarks} <br>
+      <b>Obtained Marks:</b> ${obtainedMarks} <br>
+      <b>Percentage:</b> ${percentage.toFixed(2)}% <br>
+      <b>Grade:</b> ${grade}
+    `;
+
+    // Display in document
+    document.write(result);
+  </script>
+</body>
+</html>

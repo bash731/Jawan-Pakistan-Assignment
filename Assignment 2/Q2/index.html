@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mobile Brand & Model Filter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    select, button {
+      padding: 8px;
+      margin: 5px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Mobile Brand & Model Filtering App</h2>
+
+  <!-- Brand Dropdown -->
+  <label for="brand">Select Brand:</label>
+  <select id="brand">
+    <option value="">--Select Brand--</option>
+    <option value="Samsung">Samsung</option>
+    <option value="Apple">Apple</option>
+    <option value="Xiaomi">Xiaomi</option>
+    <option value="Oppo">Oppo</option>
+  </select>
+
+  <!-- Model Dropdown -->
+  <label for="model">Select Model:</label>
+  <select id="model">
+    <option value="">--Select Model--</option>
+  </select>
+
+  <!-- Search Button -->
+  <button onclick="showResult()">Search</button>
+
+  <!-- Result -->
+  <div id="result"></div>
+
+  <script>
+    // Mobile Data
+    const mobiles = {
+      Samsung: ["Galaxy S23", "Galaxy Note 20", "Galaxy A54"],
+      Apple: ["iPhone 15", "iPhone 14 Pro", "iPhone SE"],
+      Xiaomi: ["Mi 11", "Redmi Note 12", "Poco X5"],
+      Oppo: ["Oppo F21", "Oppo Reno 8", "Oppo A76"]
+    };
+
+    const brandSelect = document.getElementById("brand");
+    const modelSelect = document.getElementById("model");
+    const resultDiv = document.getElementById("result");
+
+    // Update models when brand changes
+    brandSelect.addEventListener("change", function() {
+      let brand = this.value;
+      modelSelect.innerHTML = `<option value="">--Select Model--</option>`; // reset
+
+      if (brand && mobiles[brand]) {
+        mobiles[brand].forEach(model => {
+          let option = document.createElement("option");
+          option.value = model;
+          option.textContent = model;
+          modelSelect.appendChild(option);
+        });
+      }
+    });
+
+    // Show result
+    function showResult() {
+      let brand = brandSelect.value;
+      let model = modelSelect.value;
+
+      if (brand && model) {
+        resultDiv.innerHTML = `You selected <span style="color:blue">${brand}</span> - <span style="color:red">${model}</span>`;
+      } else {
+        resultDiv.innerHTML = `<span style="color:red">Please select both Brand and Model!</span>`;
+      }
+    }
+  </script>
+
+</body>
+</html>
